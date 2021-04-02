@@ -90,7 +90,7 @@ class Item(Resource):
     def delete(self,name):
 
 
-        query = "DELETE FROM items where name = ?"
+
         parser = reqparse.RequestParser() #initialises the parse object
 
         parser.add_argument("name",
@@ -99,6 +99,9 @@ class Item(Resource):
         help="Item name can't be blank")
 
         data = parser.parse_args()
+
+        query = "DELETE FROM items where name = ?"
+        
         try:
             connection = sqlite3.connect('data.db')
             cursor = connection.cursor()
